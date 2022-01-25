@@ -1,2 +1,2 @@
-# learn-prisma-orm
-Learn Prisma ORM
+# Learn Prisma ORM
+Learn Prisma ORM  by Rocketseat course
