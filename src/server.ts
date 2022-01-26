@@ -1,17 +1,12 @@
-import { PrismaClient } from '@prisma/client';
+import create from './create';
+import consult from './consult';
 
-const prisma = new PrismaClient();
+/*
+create({
+  name: 'Prisma ORM',
+  description: 'Aprendendo a usar o ORM Prisma',
+  duration: 200,
+});
+*/
 
-const main = async () => {
-  const result = await prisma.courses.create({
-    data: {
-      name: 'Prisma ORM',
-      description: 'Aprendendo a usar o ORM Prisma',
-      duration: 200,
-    },
-  });
-
-  console.log(result);
-};
-
-main();
+consult();
