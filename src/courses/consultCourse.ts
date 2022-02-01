@@ -5,6 +5,9 @@ const prismaClient = new PrismaClient();
 const consult = async () => {
   const lastCourse = await prismaClient.courses.findFirst({
     take: -1,
+    include: {
+      teacher: true,
+    }
   });
 
   console.log(lastCourse);
@@ -14,6 +17,9 @@ const consult = async () => {
       duration: {
         gt: 100,
       }
+    },
+    include: {
+      teacher: true,
     }
   });
 
