@@ -1,5 +1,10 @@
 import { PrismaClient } from '@prisma/client';
 
+interface IModuleProps {
+  name: string;
+  description: string;
+}
+
 interface ITeacherProps {
   name: string;
 }
@@ -9,12 +14,13 @@ interface ICourseProps {
   description?: string;
   duration: number;
   teacher: ITeacherProps;
+  modules: IModuleProps[];
 }
 
 const prisma = new PrismaClient();
 
 const create = async ({
-  name, description, duration, teacher,
+  name, description, duration, teacher, modules,
 }: ICourseProps) => {
   const result = await prisma.courses.create({
     data: {
@@ -31,6 +37,11 @@ const create = async ({
           },
         }
       },
+      modules: {
+        createMany: {
+          data: [...modules]
+        }
+      }
     },
   });
 
